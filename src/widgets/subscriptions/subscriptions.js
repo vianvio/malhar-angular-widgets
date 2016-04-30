@@ -17,27 +17,17 @@
 'use strict';
 
 angular.module('ui.widgets')
-  .directive('landRights', function () {
+  .directive('subscriptions', function () {
     return {
       restrict: 'A',
       replace: true,
-      templateUrl: 'template/widgets/landRights/landRights.html',
+      templateUrl: 'template/widgets/subscriptions/subscriptions.html',
       scope: {
       },
       controller: function () {
       },
-      link: function (scope, element) {
-        scope.$watch(function() {
-          return element.width();
-        }, function(newValue) {
-          if (newValue > 343) { // (533 + 145) / 2
-            element.find('.land-rights-medium').show();
-            element.find('.land-rights-small').hide();
-          } else {
-            element.find('.land-rights-medium').hide();
-            element.find('.land-rights-small').show();
-          }
-        });
+      link: function postLink() {
+        
       }
     };
   });

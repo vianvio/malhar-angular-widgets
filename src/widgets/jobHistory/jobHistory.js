@@ -26,8 +26,24 @@ angular.module('ui.widgets')
       },
       controller: function () {
       },
-      link: function postLink() {
-        
+      link: function (scope, element) {
+        scope.$watch(function() {
+          return element.width();
+        }, function(newValue) {
+          if (newValue > 675) { // (533 + 818) / 2
+            element.find('.job-history-large').show();
+            element.find('.job-history-medium').hide();
+            element.find('.job-history-small').hide();
+          } else if (newValue > 343 && newValue <= 675){ // (145 + 533) / 2
+            element.find('.job-history-large').hide();
+            element.find('.job-history-medium').show();
+            element.find('.job-history-small').hide();
+          } else {
+            element.find('.job-history-large').hide();
+            element.find('.job-history-medium').hide();
+            element.find('.job-history-small').show();
+          }
+        });
       }
     };
   });

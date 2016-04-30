@@ -17,11 +17,11 @@
 'use strict';
 
 angular.module('ui.widgets')
-  .directive('landRights', function () {
+  .directive('productionHistory', function () {
     return {
       restrict: 'A',
       replace: true,
-      templateUrl: 'template/widgets/landRights/landRights.html',
+      templateUrl: 'template/widgets/productionHistory/productionHistory.html',
       scope: {
       },
       controller: function () {
@@ -30,12 +30,18 @@ angular.module('ui.widgets')
         scope.$watch(function() {
           return element.width();
         }, function(newValue) {
-          if (newValue > 343) { // (533 + 145) / 2
-            element.find('.land-rights-medium').show();
-            element.find('.land-rights-small').hide();
+          if (newValue > 675) { // (533 + 818) / 2
+            element.find('.production-history-large').show();
+            element.find('.production-history-medium').hide();
+            element.find('.production-history-small').hide();
+          } else if (newValue > 343 && newValue <= 675){ // (145 + 533) / 2
+            element.find('.production-history-large').hide();
+            element.find('.production-history-medium').show();
+            element.find('.production-history-small').hide();
           } else {
-            element.find('.land-rights-medium').hide();
-            element.find('.land-rights-small').show();
+            element.find('.production-history-large').hide();
+            element.find('.production-history-medium').hide();
+            element.find('.production-history-small').show();
           }
         });
       }

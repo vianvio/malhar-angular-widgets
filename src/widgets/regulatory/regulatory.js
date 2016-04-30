@@ -17,11 +17,11 @@
 'use strict';
 
 angular.module('ui.widgets')
-  .directive('landRights', function () {
+  .directive('regulatory', function () {
     return {
       restrict: 'A',
       replace: true,
-      templateUrl: 'template/widgets/landRights/landRights.html',
+      templateUrl: 'template/widgets/regulatory/regulatory.html',
       scope: {
       },
       controller: function () {
@@ -31,11 +31,11 @@ angular.module('ui.widgets')
           return element.width();
         }, function(newValue) {
           if (newValue > 343) { // (533 + 145) / 2
-            element.find('.land-rights-medium').show();
-            element.find('.land-rights-small').hide();
+            element.find('.regulatory-medium').show();
+            element.find('.regulatory-small').hide();
           } else {
-            element.find('.land-rights-medium').hide();
-            element.find('.land-rights-small').show();
+            element.find('.regulatory-medium').hide();
+            element.find('.regulatory-small').show();
           }
         });
       }

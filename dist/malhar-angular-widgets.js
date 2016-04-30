@@ -1377,8 +1377,24 @@ angular.module('ui.widgets')
       },
       controller: function () {
       },
-      link: function postLink() {
-        
+      link: function (scope, element) {
+        scope.$watch(function() {
+          return element.width();
+        }, function(newValue) {
+          if (newValue > 675) { // (533 + 818) / 2
+            element.find('.job-history-large').show();
+            element.find('.job-history-medium').hide();
+            element.find('.job-history-small').hide();
+          } else if (newValue > 343 && newValue <= 675){ // (145 + 533) / 2
+            element.find('.job-history-large').hide();
+            element.find('.job-history-medium').show();
+            element.find('.job-history-small').hide();
+          } else {
+            element.find('.job-history-large').hide();
+            element.find('.job-history-medium').hide();
+            element.find('.job-history-small').show();
+          }
+        });
       }
     };
   });
@@ -1410,8 +1426,18 @@ angular.module('ui.widgets')
       },
       controller: function () {
       },
-      link: function postLink() {
-        
+      link: function (scope, element) {
+        scope.$watch(function() {
+          return element.width();
+        }, function(newValue) {
+          if (newValue > 343) { // (533 + 145) / 2
+            element.find('.land-rights-medium').show();
+            element.find('.land-rights-small').hide();
+          } else {
+            element.find('.land-rights-medium').hide();
+            element.find('.land-rights-small').show();
+          }
+        });
       }
     };
   });
@@ -1504,6 +1530,39 @@ angular.module('ui.widgets')
             draw(chart);
           }
         });
+      }
+    };
+  });
+/*
+ * Copyright (c) 2014 DataTorrent, Inc. ALL Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+'use strict';
+
+angular.module('ui.widgets')
+  .directive('mapViewNew', function () {
+    return {
+      restrict: 'A',
+      replace: true,
+      templateUrl: 'template/widgets/mapViewNew/mapViewNew.html',
+      scope: {
+      },
+      controller: function () {
+      },
+      link: function postLink() {
+        
       }
     };
   });
@@ -1904,6 +1963,55 @@ angular.module('ui.widgets')
 'use strict';
 
 angular.module('ui.widgets')
+  .directive('productionHistory', function () {
+    return {
+      restrict: 'A',
+      replace: true,
+      templateUrl: 'template/widgets/productionHistory/productionHistory.html',
+      scope: {
+      },
+      controller: function () {
+      },
+      link: function (scope, element) {
+        scope.$watch(function() {
+          return element.width();
+        }, function(newValue) {
+          if (newValue > 675) { // (533 + 818) / 2
+            element.find('.production-history-large').show();
+            element.find('.production-history-medium').hide();
+            element.find('.production-history-small').hide();
+          } else if (newValue > 343 && newValue <= 675){ // (145 + 533) / 2
+            element.find('.production-history-large').hide();
+            element.find('.production-history-medium').show();
+            element.find('.production-history-small').hide();
+          } else {
+            element.find('.production-history-large').hide();
+            element.find('.production-history-medium').hide();
+            element.find('.production-history-small').show();
+          }
+        });
+      }
+    };
+  });
+/*
+ * Copyright (c) 2014 DataTorrent, Inc. ALL Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+'use strict';
+
+angular.module('ui.widgets')
   .directive('wtRandom', function ($interval) {
     return {
       restrict: 'A',
@@ -1918,6 +2026,49 @@ angular.module('ui.widgets')
 
         scope.$on('$destroy', function () {
           $interval.cancel(promise);
+        });
+      }
+    };
+  });
+/*
+ * Copyright (c) 2014 DataTorrent, Inc. ALL Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+'use strict';
+
+angular.module('ui.widgets')
+  .directive('regulatory', function () {
+    return {
+      restrict: 'A',
+      replace: true,
+      templateUrl: 'template/widgets/regulatory/regulatory.html',
+      scope: {
+      },
+      controller: function () {
+      },
+      link: function (scope, element) {
+        scope.$watch(function() {
+          return element.width();
+        }, function(newValue) {
+          if (newValue > 343) { // (533 + 145) / 2
+            element.find('.regulatory-medium').show();
+            element.find('.regulatory-small').hide();
+          } else {
+            element.find('.regulatory-medium').hide();
+            element.find('.regulatory-small').show();
+          }
         });
       }
     };
@@ -1971,6 +2122,39 @@ angular.module('ui.widgets')
 'use strict';
 
 angular.module('ui.widgets')
+  .directive('searchWell', function () {
+    return {
+      restrict: 'A',
+      replace: true,
+      templateUrl: 'template/widgets/searchWell/searchWell.html',
+      scope: {
+      },
+      controller: function () {
+      },
+      link: function postLink() {
+        
+      }
+    };
+  });
+/*
+ * Copyright (c) 2014 DataTorrent, Inc. ALL Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+'use strict';
+
+angular.module('ui.widgets')
   .directive('wtSelect', function () {
     return {
       restrict: 'A',
@@ -1993,6 +2177,72 @@ angular.module('ui.widgets')
           var nextIndex = (index + 1) % $scope.options.length;
           $scope.value = $scope.options[nextIndex];
         };
+      }
+    };
+  });
+/*
+ * Copyright (c) 2014 DataTorrent, Inc. ALL Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+'use strict';
+
+angular.module('ui.widgets')
+  .directive('shortcuts', function () {
+    return {
+      restrict: 'A',
+      replace: true,
+      templateUrl: 'template/widgets/shortcuts/shortcuts.html',
+      scope: {
+      },
+      controller: function () {
+      },
+      link: function postLink() {
+        
+      }
+    };
+  });
+/*
+ * Copyright (c) 2014 DataTorrent, Inc. ALL Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+'use strict';
+
+angular.module('ui.widgets')
+  .directive('subscriptions', function () {
+    return {
+      restrict: 'A',
+      replace: true,
+      templateUrl: 'template/widgets/subscriptions/subscriptions.html',
+      scope: {
+      },
+      controller: function () {
+      },
+      link: function postLink() {
+        
       }
     };
   });
@@ -2099,6 +2349,39 @@ angular.module('ui.widgets')
 'use strict';
 
 angular.module('ui.widgets')
+  .directive('wellBoreCutout', function () {
+    return {
+      restrict: 'A',
+      replace: true,
+      templateUrl: 'template/widgets/wellBoreCutout/wellBoreCutout.html',
+      scope: {
+      },
+      controller: function () {
+      },
+      link: function postLink() {
+        
+      }
+    };
+  });
+/*
+ * Copyright (c) 2014 DataTorrent, Inc. ALL Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+'use strict';
+
+angular.module('ui.widgets')
   .directive('wellBoreDiagram', function () {
     return {
       restrict: 'A',
@@ -2154,14 +2437,23 @@ angular.module("ui.widgets").run(["$templateCache", function($templateCache) {
   );
 
   $templateCache.put("template/widgets/jobHistory/jobHistory.html",
-    "<div class=\"bar-chart\">\n" +
-    "    <img alt='Job History' style='width: 100%; height: 100%;' src='images/jobHistory.png' />\n" +
-    "</div>"
+    "<div class=\"img-holder\">\n" +
+    "    <img alt='Job History' class='responsive-img job-history-large' src='images/JobHistoryLarge.png' />\n" +
+    "    <img alt='Job History' class='responsive-img job-history-medium' src='images/JobHistoryMedium.png' />\n" +
+    "    <img alt='Job History' class='responsive-img job-history-small' src='images/JobHistorySmall.png' />\n" +
+    "</div>\n"
   );
 
   $templateCache.put("template/widgets/landRights/landRights.html",
+    "<div class=\"img-holder\">\n" +
+    "    <img alt='Land Rights' class='responsive-img land-rights-medium' src='images/LandRightsMedium.png' />\n" +
+    "    <img alt='Land Rights' class='responsive-img land-rights-small' src='images/LandRightsSmall.png' />\n" +
+    "</div>"
+  );
+
+  $templateCache.put("template/widgets/mapViewNew/mapViewNew.html",
     "<div class=\"bar-chart\">\n" +
-    "    <img alt='Land Rights' style='width: 100%; height: 100%;' src='images/LandRights.png' />\n" +
+    "    <img alt='Map View New' style='width: 100%; height: 100%;' src='images/mapViewNew.png' />\n" +
     "</div>"
   );
 
@@ -2235,6 +2527,14 @@ angular.module("ui.widgets").run(["$templateCache", function($templateCache) {
     "</div>"
   );
 
+  $templateCache.put("template/widgets/productionHistory/productionHistory.html",
+    "<div class=\"img-holder\">\n" +
+    "    <img alt='Production History' class='responsive-img production-history-large' src='images/ProductionHistoryLarge.png' />\n" +
+    "    <img alt='Production History' class='responsive-img production-history-medium' src='images/ProductionHistoryMedium.png' />\n" +
+    "    <img alt='Production History' class='responsive-img production-history-small' src='images/ProductionHistorySmall.png' />\n" +
+    "</div>\n"
+  );
+
   $templateCache.put("template/widgets/random/random.html",
     "<div>\n" +
     "    Random Number\n" +
@@ -2242,10 +2542,23 @@ angular.module("ui.widgets").run(["$templateCache", function($templateCache) {
     "</div>"
   );
 
+  $templateCache.put("template/widgets/regulatory/regulatory.html",
+    "<div class=\"img-holder\">\n" +
+    "    <img alt='Regulatory' class='responsive-img regulatory-medium' src='images/RegulatoryMedium.png' />\n" +
+    "    <img alt='Regulatory' class='responsive-img regulatory-small' src='images/RegulatorySmall.png' />\n" +
+    "</div>"
+  );
+
   $templateCache.put("template/widgets/scopeWatch/scopeWatch.html",
     "<div>\n" +
     "    Value\n" +
     "    <div class=\"alert\" ng-class=\"valueClass || 'alert-warning'\">{{scopeValue || 'no data'}}</div>\n" +
+    "</div>"
+  );
+
+  $templateCache.put("template/widgets/searchWell/searchWell.html",
+    "<div class=\"bar-chart\">\n" +
+    "    <input type='text' class='form-control' placeholder=\"Search Well\" />\n" +
     "</div>"
   );
 
@@ -2259,6 +2572,18 @@ angular.module("ui.widgets").run(["$templateCache", function($templateCache) {
     "    <button type=\"button\" class=\"btn btn-default\" ng-click=\"nextValue();\">\n" +
     "        <span class=\"glyphicon glyphicon-chevron-right\"></span>\n" +
     "    </button>\n" +
+    "</div>"
+  );
+
+  $templateCache.put("template/widgets/shortcuts/shortcuts.html",
+    "<div class=\"bar-chart\">\n" +
+    "    <img alt='Shortcuts' style='width: 100%; height: 100%;' src='images/Shortcuts.png' />\n" +
+    "</div>"
+  );
+
+  $templateCache.put("template/widgets/subscriptions/subscriptions.html",
+    "<div class=\"bar-chart\">\n" +
+    "    <img alt='Subscriptions' style='width: 100%; height: 100%;' src='images/Subscriptions.png' />\n" +
     "</div>"
   );
 
@@ -2279,9 +2604,15 @@ angular.module("ui.widgets").run(["$templateCache", function($templateCache) {
     "</div>"
   );
 
+  $templateCache.put("template/widgets/wellBoreCutout/wellBoreCutout.html",
+    "<div class=\"bar-chart\">\n" +
+    "    <img alt='Well Bore Cutout' style='width: 100%; height: 100%;' src='images/wellBoreCutout.png' />\n" +
+    "</div>"
+  );
+
   $templateCache.put("template/widgets/wellBoreDiagram/wellBoreDiagram.html",
     "<div class=\"bar-chart\">\n" +
-    "    <img alt='Well Bore Diagram' style='width: 100%; height: 100%;' src='images/WellBoreDiagram.png' />\n" +
+    "    <img alt='Well Bore Diagram' style='width: 100%; height: 100%;' src='images/WellBoreDiagramv2.png' />\n" +
     "</div>"
   );
 
